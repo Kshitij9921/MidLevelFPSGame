@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
     public float mouseSensitivity;
     public float minX = -90.0f;
     public float maxX = 90.0f;
+    private bool state;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -42,7 +43,14 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            state = Cursor.visible;
 
+            Cursor.visible = !state;
+            print(Cursor.visible);
+            
+        }
 
 
     }
