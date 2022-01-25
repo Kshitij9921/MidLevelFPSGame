@@ -522,4 +522,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 0.2
-  playerJumpForce: 250
+  playerJumpForce: 500
