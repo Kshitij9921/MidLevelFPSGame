@@ -120,6 +120,14 @@ public class CharacterController : MonoBehaviour
         //transform.position += new Vector3(horizontalMovement, 0, forwardMovement);
         transform.position += cam.transform.forward * forwardMovement + cam.transform.right * horizontalMovement;
 
+        if (forwardMovement != 0 || horizontalMovement != 0)
+        {
+            animator.SetBool("Walk", true);
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
     }
 
     void PlayerJumpMovement()

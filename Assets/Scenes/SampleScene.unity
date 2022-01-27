@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b57d85ab6971404eb984e5d6b924e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.2
+  playerSpeed: 0.1
   playerJumpForce: 300
   cam: {fileID: 963194225}
   mouseSensitivity: 10
