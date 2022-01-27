@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
     public float minX = -90.0f;
     public float maxX = 90.0f;
     public GameObject menu;
+    public Animator animator;
 
 
     private Rigidbody rb;
@@ -50,6 +51,20 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+       if(Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("Aiming", !animator.GetBool("Aiming"));
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("Fire",true);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("Fire", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
