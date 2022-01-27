@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CharacterController : MonoBehaviour
 {
     public float playerSpeed;
     public float playerJumpForce;
-    private Rigidbody rb;
-    private bool isGrounded;
-    private CapsuleCollider capsuleCollider;
     public GameObject cam;
-    private Quaternion camRotation;
-    private Quaternion playerRotation;
     public float mouseSensitivity;
     public float minX = -90.0f;
     public float maxX = 90.0f;
+    public GameObject menu;
+
+
+    private Rigidbody rb;
+    private bool isGrounded;
+    private CapsuleCollider capsuleCollider;
+    
+    private Quaternion camRotation;
+    private Quaternion playerRotation;
+    
     private bool state;
     // Start is called before the first frame update
     private void Awake()
@@ -26,6 +32,7 @@ public class CharacterController : MonoBehaviour
     {
         camRotation = cam.transform.localRotation;
         playerRotation = transform.localRotation;
+        Cursor.visible = false;
     }
     private void FixedUpdate()
     {
@@ -43,16 +50,33 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            state = Cursor.visible;
 
-            Cursor.visible = !state;
-            print(Cursor.visible);
-            
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
         }
 
+    }
 
+    void Pause()
+    {
+        menu.SetActive(false);
+           
+            state = Cursor.visible;
+       // print("State: " + state);
+            Cursor.visible = !state;
+        //Cursor.visible = !Cursor.visible;
+
+        if (Cursor.visible)
+        {
+            menu.SetActive(true);
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            print("HUAAAAAQ");
+        }
+            
+
+        
     }
 
     bool PlayerGrounded()
