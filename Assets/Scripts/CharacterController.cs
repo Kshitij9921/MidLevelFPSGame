@@ -15,6 +15,13 @@ public class CharacterController : MonoBehaviour
     public Animator animator;
 
 
+    //inventroy section
+    private int ammoPickup;
+    private int maxAmmoPickup = 10;
+    private int healthPickup;
+    private int maxHealthPickup = 10;
+
+
     private Rigidbody rb;
     private bool isGrounded;
     private CapsuleCollider capsuleCollider;
@@ -31,6 +38,7 @@ public class CharacterController : MonoBehaviour
     }
     void Start()
     {
+        healthPickup = maxHealthPickup;
         camRotation = cam.transform.localRotation;
         playerRotation = transform.localRotation;
         Cursor.visible = false;
@@ -59,16 +67,23 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            animator.SetBool("Fire",true);
+            animator.SetTrigger("Fire");
         }
         if (Input.GetMouseButtonUp(0))
         {
-            animator.SetBool("Fire", false);
+            
+            animator.SetBool("WalkandFire", false);
+            animator.SetBool("RunandFire", false);
         }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
             Pause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            animator.SetTrigger("Reloding");
         }
 
     }
@@ -120,14 +135,34 @@ public class CharacterController : MonoBehaviour
         //transform.position += new Vector3(horizontalMovement, 0, forwardMovement);
         transform.position += cam.transform.forward * forwardMovement + cam.transform.right * horizontalMovement;
 
-        if (forwardMovement != 0 || horizontalMovement != 0)
+        if (forwardMovement != 0 || horizontalMovement != 0 )
         {
-            animator.SetBool("Walk", true);
+            animator.SetTrigger("Walk");
+            if (Input.GetMouseButtonDown(0))
+            {
+                animator.SetTrigger("WalkandFire");
+            }
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                animator.SetTrigger("Run");
+                if (Input.GetMouseButtonDown(0))
+                {
+                    //animator.SetBool("WalkandFire", false);
+                    animator.SetTrigger("RunandFire");
+                }
+            }
+            //if(Input.GetKeyUp(KeyCode.E))
+            //{
+            //    animator.SetBool("Run", false);
+            //}
         }
         else
         {
-            animator.SetBool("Walk", false);
+            //animator.SetBool("Run", false);
+            
         }
+            
+        
     }
 
     void PlayerJumpMovement()
@@ -153,6 +188,25 @@ public class CharacterController : MonoBehaviour
         return value;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ammunation" && ammoPickup < maxAmmoPickup)
+        { 
+            
+            ammoPickup = Mathf.Clamp(ammoPickup +5, 0,maxAmmoPickup);
+            Debug.Log("Current Ammo: " + ammoPickup);
+            print("Ammo!!");
+            Destroy(collision.gameObject);
+            
+        }
+        else if (collision.gameObject.tag.Equals("Medkit") && healthPickup < maxHealthPickup)
+        {
+            healthPickup = Mathf.Clamp(healthPickup + 5, 0, maxHealthPickup);
+            Debug.Log("Health: " + healthPickup);
+            print("MEDIIC!!");
+            Destroy(collision.gameObject);
+        }
+    }
 
 
     //public float playerSpeed;
