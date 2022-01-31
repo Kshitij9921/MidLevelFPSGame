@@ -213,6 +213,12 @@ public class CharacterController : MonoBehaviour
             print("MEDIIC!!");
             Destroy(collision.gameObject);
         }
+        else if(collision.gameObject.tag.Equals("Lava") )
+        {
+            // playerdeath when health reaches zero need to apply
+            health = Mathf.Clamp(health -= 5, 0, maxHealthPickup);
+            Debug.Log("Health: " + health); 
+        }
     }
 
 
