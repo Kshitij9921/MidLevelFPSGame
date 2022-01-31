@@ -16,9 +16,9 @@ public class CharacterController : MonoBehaviour
 
 
     //inventroy section
-    private int ammoPickup;
+    private int ammo;
     private int maxAmmoPickup = 10;
-    private int healthPickup;
+    private int health;
     private int maxHealthPickup = 10;
 
 
@@ -38,7 +38,8 @@ public class CharacterController : MonoBehaviour
     }
     void Start()
     {
-        healthPickup = maxHealthPickup;
+        ammo = maxAmmoPickup;
+        health = maxHealthPickup;
         camRotation = cam.transform.localRotation;
         playerRotation = transform.localRotation;
         Cursor.visible = false;
@@ -65,9 +66,15 @@ public class CharacterController : MonoBehaviour
             animator.SetBool("Aiming", !animator.GetBool("Aiming"));
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) &&  !animator.GetBool("Fire"))
         {
-            animator.SetTrigger("Fire");
+            if(ammo > 0)
+            {
+                ammo = Mathf.Clamp(ammo-= 1, 0, maxAmmoPickup);
+                Debug.Log("Ammo: " + ammo);
+                animator.SetTrigger("Fire");
+            }
+            
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -190,19 +197,19 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ammunation" && ammoPickup < maxAmmoPickup)
+        if (collision.gameObject.tag == "Ammunation" && ammo < maxAmmoPickup)
         { 
             
-            ammoPickup = Mathf.Clamp(ammoPickup +5, 0,maxAmmoPickup);
-            Debug.Log("Current Ammo: " + ammoPickup);
+            ammo = Mathf.Clamp(ammo +5, 0,maxAmmoPickup);
+            Debug.Log("Current Ammo: " + ammo);
             print("Ammo!!");
             Destroy(collision.gameObject);
             
         }
-        else if (collision.gameObject.tag.Equals("Medkit") && healthPickup < maxHealthPickup)
+        else if (collision.gameObject.tag.Equals("Medkit") && health < maxHealthPickup)
         {
-            healthPickup = Mathf.Clamp(healthPickup + 5, 0, maxHealthPickup);
-            Debug.Log("Health: " + healthPickup);
+            health = Mathf.Clamp(health + 5, 0, maxHealthPickup);
+            Debug.Log("Health: " + health);
             print("MEDIIC!!");
             Destroy(collision.gameObject);
         }
