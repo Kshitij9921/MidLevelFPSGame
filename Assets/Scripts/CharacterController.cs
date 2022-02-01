@@ -16,8 +16,10 @@ public class CharacterController : MonoBehaviour
 
 
     //inventroy section
-    private int ammo;
-    private int maxAmmoPickup = 10;
+   /*ammo in Gun*/ private int ammo;
+    /*max ammo in gun*/  private int ammoInGun = 10;
+    /*max ammo in bag */private int maxAmmoPickup = 20;
+    /*ammo with player*/ private int ammoInBag;
     private int health;
     private int maxHealthPickup = 10;
 
@@ -38,7 +40,9 @@ public class CharacterController : MonoBehaviour
     }
     void Start()
     {
-        ammo = maxAmmoPickup;
+        ammoInBag = maxAmmoPickup;
+        ammo = ammoInGun;
+        print("Ammo in Gun: " + ammo +"\n Ammo in Bag: "+  ammoInBag);
         health = maxHealthPickup;
         camRotation = cam.transform.localRotation;
         playerRotation = transform.localRotation;
@@ -70,8 +74,8 @@ public class CharacterController : MonoBehaviour
         {
             if(ammo > 0)
             {
-                ammo = Mathf.Clamp(ammo-= 1, 0, maxAmmoPickup);
-                Debug.Log("Ammo: " + ammo);
+                ammo = Mathf.Clamp(ammo-= 1, 0, ammoInGun);
+                print("Ammo in Gun: " + ammo + "\n Ammo in Bag: " + ammoInBag);
                 animator.SetTrigger("Fire");
             }
             
@@ -90,7 +94,22 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            animator.SetTrigger("Reloding");
+           
+            int ammoNeeded = ammoInGun - ammo; // 5 = 15 - 10
+            Debug.Log("ammo Needed: " + ammoNeeded);
+            if(ammoNeeded < ammoInBag && ammoNeeded>0)
+            {
+                ammoInBag -= ammoNeeded;
+                animator.SetTrigger("Reloding");
+                ammo += ammoNeeded;
+
+                print("Ammo in Gun: " + ammo + "\n Ammo in Bag: " + ammoInBag);
+            }
+            //else if(ammoNeeded > ammo)
+            //{
+            //    ammo += ammoNeeded;
+            //    print("Ammo in Gun: " + ammo + "\n Ammo in Bag: " + ammoInBag);
+            //}
         }
 
     }
@@ -197,12 +216,11 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ammunation" && ammo < maxAmmoPickup)
+        if (collision.gameObject.tag == "Ammunation" && ammoInBag < maxAmmoPickup)
         { 
             
-            ammo = Mathf.Clamp(ammo +5, 0,maxAmmoPickup);
-            Debug.Log("Current Ammo: " + ammo);
-            print("Ammo!!");
+            ammoInBag = Mathf.Clamp(ammoInBag +5, 0,maxAmmoPickup);
+            print("Ammo in Gun: " + ammo + "\n Ammo in Bag: " + ammoInBag);
             Destroy(collision.gameObject);
             
         }

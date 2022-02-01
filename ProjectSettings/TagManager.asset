@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ammunation
   - Medkit
+  - Lava
   layers:
   - Default
   - TransparentFX
