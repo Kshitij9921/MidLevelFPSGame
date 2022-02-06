@@ -163,10 +163,14 @@ public class CharacterController : MonoBehaviour
 
         if (forwardMovement != 0 || horizontalMovement != 0 )
         {
-            animator.SetTrigger("Walk");
+            animator.SetBool("Walk",true);
             if (Input.GetMouseButtonDown(0))
             {
-                animator.SetTrigger("WalkandFire");
+                animator.SetBool("WalkandFire",true);
+            }
+            else
+            {
+                animator.SetBool("WalkandFire", false);
             }
             if(Input.GetKeyDown(KeyCode.E))
             {
@@ -185,6 +189,7 @@ public class CharacterController : MonoBehaviour
         else
         {
             //animator.SetBool("Run", false);
+            animator.SetBool("Walk",false);
             
         }
             
