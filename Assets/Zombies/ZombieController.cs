@@ -60,15 +60,19 @@ public class ZombieController : MonoBehaviour
                     float newRandompositionY = Terrain.activeTerrain.SampleHeight(new Vector3(newRandompositionX, 0, newRandompositionZ));
                     Vector3 finalDestination = new Vector3(newRandompositionX, newRandompositionY, newRandompositionZ);
                     agent.SetDestination(finalDestination);
-                    agent.stoppingDistance = 3f;
+                    agent.stoppingDistance = 0f;
                     TrunOffAnimtriggers();
                     anim.SetBool("isWalking", true);
+                }
+                if(isVissible())
+                {
+                    state=STATE.CHASE;
                 }
                 
                 break;
             case STATE.CHASE:
                 agent.SetDestination(targetPlayer.transform.position);
-                agent.stoppingDistance = 1f;
+                agent.stoppingDistance = 0.5f;
                 TrunOffAnimtriggers();
                 anim.SetBool("isRunning",true);
                 if(agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
