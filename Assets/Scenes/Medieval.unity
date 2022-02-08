@@ -910,8 +910,9 @@ GameObject:
   - component: {fileID: 167583813}
   - component: {fileID: 167583812}
   - component: {fileID: 167583811}
+  - component: {fileID: 167583814}
   m_Layer: 0
-  m_Name: SpawnningPosition
+  m_Name: SpawningPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,12 +975,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167583810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 565.47, y: 0.57, z: 764.1586}
+  m_LocalPosition: {x: 597.35, y: 0.5, z: 799.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167583814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167583810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d915d63b4148e54fa7b9c8f288cc452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombiePrefab: {fileID: 1203782149}
+  number: 10
+  spawnRadius: 20
 --- !u!1 &168063722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4326,7 +4342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211911928863542632, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 540.08
+      value: 576.8
       objectReference: {fileID: 0}
     - target: {fileID: 2211911928863542632, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4334,7 +4350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211911928863542632, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 760.94
+      value: 803.5
       objectReference: {fileID: 0}
     - target: {fileID: 2211911928863542632, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6820,6 +6836,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4089670712456684, guid: 020362122a092254db5d9023f1df2599, type: 3}
   m_PrefabInstance: {fileID: 569197931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1203782149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649283112028866171, guid: 7912ec467aa9147a59e49b3925ad126e, type: 3}
+  m_PrefabInstance: {fileID: 588820491}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1214897479 stripped
 Transform:
