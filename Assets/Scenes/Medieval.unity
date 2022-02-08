@@ -3091,10 +3091,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1465283298, guid: 7912ec467aa9147a59e49b3925ad126e, type: 3}
+      propertyPath: m_Speed
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542127211463571574, guid: 7912ec467aa9147a59e49b3925ad126e, type: 3}
+      propertyPath: runningSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5542127211463571574, guid: 7912ec467aa9147a59e49b3925ad126e, type: 3}
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 835056932}
+    - target: {fileID: 5542127211463571574, guid: 7912ec467aa9147a59e49b3925ad126e, type: 3}
+      propertyPath: walkingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5643912976069227624, guid: 7912ec467aa9147a59e49b3925ad126e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -8077,6 +8089,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 40718665, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
+      propertyPath: m_Speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1099347172983380646, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
       propertyPath: m_Name
       value: boss
@@ -8086,16 +8102,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3277696249206785950, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
+      propertyPath: runningSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3277696249206785950, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 835056932}
+    - target: {fileID: 3277696249206785950, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
+      propertyPath: walkingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4114869168490670261, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4114869168490670261, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 551.64
+      value: 552.83
       objectReference: {fileID: 0}
     - target: {fileID: 4114869168490670261, guid: d5b7cf80f1fab4ea0bd49a0e878214fe, type: 3}
       propertyPath: m_LocalPosition.y
