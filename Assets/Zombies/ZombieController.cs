@@ -72,15 +72,27 @@ public class ZombieController : MonoBehaviour
                 break;
             case STATE.CHASE:
                 agent.SetDestination(targetPlayer.transform.position);
-                agent.stoppingDistance = 0.5f;
+                agent.stoppingDistance = 2.0f;
                 TrunOffAnimtriggers();
                 anim.SetBool("isRunning",true);
                 if(agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
                 {
                     state = STATE.ATTACK;
                 }
+                else if (ZombieCanSeeplayer())
+                {
+                    state = STATE.WANDER;
+                    agent.ResetPath();
+                }
                 break;
             case STATE.ATTACK:
+                TrunOffAnimtriggers();
+                anim.SetBool("isAttacking", true);
+                transform.LookAt(targetPlayer.transform);
+                if (DistanceToThePlayer() > agent.stoppingDistance)
+                {
+                    state = STATE.CHASE;
+                }
                 break;
             case STATE.DEAD:
                 break;
@@ -132,6 +144,14 @@ public class ZombieController : MonoBehaviour
         //    anim.SetBool("isDead", true);
         //}
 
+    }
+    bool ZombieCanSeeplayer()
+    {
+        if (DistanceToThePlayer()>10)
+        {
+            return true;
+        }
+        return false;
     }
 
     void TrunOffAnimtriggers()
