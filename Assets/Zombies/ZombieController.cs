@@ -39,7 +39,10 @@ public class ZombieController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!targetPlayer.activeSelf)
+        {
+            return;
+        }
         switch (state)
         {
             case STATE.IDLE:
