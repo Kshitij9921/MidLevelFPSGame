@@ -4483,7 +4483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec9c05e03277468cac8631ea3ac0fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
+  targetPlayer: {fileID: 2211911928863542629, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
+  walkingSpeed: 0
+  runningSpeed: 0
 --- !u!195 &219984281
 NavMeshAgent:
   m_ObjectHideFlags: 0

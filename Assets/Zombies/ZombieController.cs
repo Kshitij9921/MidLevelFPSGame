@@ -17,7 +17,7 @@ using UnityEngine.AI;
 public class ZombieController : MonoBehaviour
 {
     Animator anim;
-    public GameObject targetPlayer;
+     GameObject targetPlayer;
     private NavMeshAgent agent;
     public float walkingSpeed;
     public float runningSpeed;
@@ -33,6 +33,8 @@ public class ZombieController : MonoBehaviour
     {
         anim = this.GetComponent<Animator>();
         agent = this.GetComponent<NavMeshAgent>();
+
+        targetPlayer = GameObject.FindGameObjectWithTag("Player");
         ///anim.SetBool("isWalking", true);
     }
 

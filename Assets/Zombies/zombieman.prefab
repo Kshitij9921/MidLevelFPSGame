@@ -1704,7 +1704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8182110007186639411
 Transform:
   m_ObjectHideFlags: 0
@@ -1752,7 +1752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec9c05e03277468cac8631ea3ac0fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
+  targetPlayer: {fileID: 2211911928863542629, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
+  walkingSpeed: 2
+  runningSpeed: 3
 --- !u!195 &254757689
 NavMeshAgent:
   m_ObjectHideFlags: 0
