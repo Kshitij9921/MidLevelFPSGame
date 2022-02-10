@@ -21,6 +21,7 @@ public class ZombieController : MonoBehaviour
     private NavMeshAgent agent;
     public float walkingSpeed;
     public float runningSpeed;
+    public GameObject zgrlPrefab;
     
 
     enum STATE { IDLE, WANDER, CHASE, ATTACK, DEAD };
@@ -41,10 +42,22 @@ public class ZombieController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!targetPlayer.activeSelf)
+        ////if (!targetPlayer.activeSelf)
+        ////{
+        ////    return;
+        ////}
+
+
+
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            return;
+           GameObject rbTemp =  Instantiate(zgrlPrefab,this.transform.position, this.transform.rotation);
+            rbTemp.transform.Find("Hips").GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 5000);
+
+            Destroy(this.gameObject,1f);
         }
+
+
         switch (state)
         {
             case STATE.IDLE:
