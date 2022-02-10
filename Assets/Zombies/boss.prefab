@@ -375,8 +375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec9c05e03277468cac8631ea3ac0fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 0
-  runningSpeed: 0
+  walkingSpeed: 2
+  runningSpeed: 1
+  ragDollPrefab: {fileID: 5538675254646078634, guid: d3f8840059fbd4b48b974f1f295a024e, type: 3}
 --- !u!195 &40718665
 NavMeshAgent:
   m_ObjectHideFlags: 0

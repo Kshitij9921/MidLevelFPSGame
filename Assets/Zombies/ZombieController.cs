@@ -21,7 +21,7 @@ public class ZombieController : MonoBehaviour
     private NavMeshAgent agent;
     public float walkingSpeed;
     public float runningSpeed;
-    public GameObject zgrlPrefab;
+    public GameObject ragDollPrefab;
     
 
     enum STATE { IDLE, WANDER, CHASE, ATTACK, DEAD };
@@ -51,10 +51,20 @@ public class ZombieController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-           GameObject rbTemp =  Instantiate(zgrlPrefab,this.transform.position, this.transform.rotation);
-            rbTemp.transform.Find("Hips").GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 5000);
+            if (Random.Range(0,10) < 5)
+            {
+                GameObject rbTemp = Instantiate(ragDollPrefab, this.transform.position, this.transform.rotation);
+                rbTemp.transform.Find("Hips").GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 5000);
 
-            Destroy(this.gameObject,1f);
+                Destroy(this.gameObject, 1f);
+            }
+            else
+            {
+                TurnOffAnimtriggers();
+                anim.SetBool("isDead", true);
+                state = STATE.DEAD;
+            }
+          
         }
 
 

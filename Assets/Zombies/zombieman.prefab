@@ -1752,9 +1752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec9c05e03277468cac8631ea3ac0fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 2211911928863542629, guid: c8d543f7c38f58842bbf819acd5e54da, type: 3}
   walkingSpeed: 2
   runningSpeed: 3
+  ragDollPrefab: {fileID: 3075863074043498020, guid: be60692b5cec2de4c9ee8c588b37052c, type: 3}
 --- !u!195 &254757689
 NavMeshAgent:
   m_ObjectHideFlags: 0
