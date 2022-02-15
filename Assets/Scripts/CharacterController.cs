@@ -13,9 +13,10 @@ public class CharacterController : MonoBehaviour
     public float maxX = 90.0f;
     public GameObject menu;
     public Animator animator;
+    public GameObject  gunShootPos;
 
 
-    //inventroy section
+   //inventroy section
    /*ammo in Gun*/ private int ammo;
     /*max ammo in gun*/  private int ammoInGun = 10;
     /*max ammo in bag */private int maxAmmoPickup = 20;
@@ -77,6 +78,7 @@ public class CharacterController : MonoBehaviour
                 ammo = Mathf.Clamp(ammo-= 1, 0, ammoInGun);
                 print("Ammo in Gun: " + ammo + "\n Ammo in Bag: " + ammoInBag);
                 animator.SetTrigger("Fire");
+                ZombieHit();
             }
             
         }
@@ -243,6 +245,35 @@ public class CharacterController : MonoBehaviour
             Debug.Log("Health: " + health); 
         }
     }
+
+    void ZombieHit()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(gunShootPos.transform.position, gunShootPos.transform.forward, out hitInfo, 200f))
+        {
+            GameObject tempZombieHit = hitInfo.collider.gameObject;
+            if (tempZombieHit.tag== "zombie")
+            {
+                
+                GameObject tempRagDollZombiePrefab = tempZombieHit.GetComponent<ZombieController>().ragDollPrefab;
+                GameObject tempNewRagdollPrefab = Instantiate(tempRagDollZombiePrefab,tempZombieHit.transform.position,tempZombieHit.transform.rotation);
+                tempNewRagdollPrefab.transform.Find("Hips").GetComponent<Rigidbody>().AddForce(gunShootPos.transform.forward * 1000);
+                Destroy(tempZombieHit);
+            }
+            else
+            {
+                tempZombieHit.GetComponent<ZombieController>().ZombieKill();
+            }
+        }
+    }
+
+     ZombieController zc;
+    //void ZombieKill()
+    //{
+    //    zc.TurnOffAnimtriggers();
+    //    zc.anim.SetBool("isDead", true);
+    //    zc.state = ZombieController.STATE.DEAD;
+    //}
 
 
     //public float playerSpeed;

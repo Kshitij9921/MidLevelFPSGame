@@ -16,7 +16,7 @@ using UnityEngine.AI;
 
 public class ZombieController : MonoBehaviour
 {
-    Animator anim;
+    public Animator anim;
      GameObject targetPlayer;
     private NavMeshAgent agent;
     public float walkingSpeed;
@@ -24,9 +24,9 @@ public class ZombieController : MonoBehaviour
     public GameObject ragDollPrefab;
     
 
-    enum STATE { IDLE, WANDER, CHASE, ATTACK, DEAD };
+     public enum STATE { IDLE, WANDER, CHASE, ATTACK, DEAD };
 
-    STATE state = STATE.IDLE;
+   public STATE state = STATE.IDLE;
    
 
     // Start is called before the first frame update
@@ -60,9 +60,7 @@ public class ZombieController : MonoBehaviour
             }
             else
             {
-                TurnOffAnimtriggers();
-                anim.SetBool("isDead", true);
-                state = STATE.DEAD;
+                ZombieKill();
             }
           
         }
@@ -192,6 +190,13 @@ public class ZombieController : MonoBehaviour
         //}
 
     }
+
+    public void ZombieKill()
+    {
+        TurnOffAnimtriggers();
+        anim.SetBool("isDead", true);
+        state = STATE.DEAD;
+    }
     bool ZombieCanSeeplayer()
     {
         if (DistanceToThePlayer()>10)
@@ -201,7 +206,7 @@ public class ZombieController : MonoBehaviour
         return false;
     }
 
-    void TurnOffAnimtriggers()
+    public void TurnOffAnimtriggers()
     {
         anim.SetBool("isWalking", false);
         anim.SetBool("isRunning", false);

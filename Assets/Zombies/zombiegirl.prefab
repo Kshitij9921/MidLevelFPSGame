@@ -2181,6 +2181,7 @@ GameObject:
   - component: {fileID: 5542127211463571573}
   - component: {fileID: 5542127211463571574}
   - component: {fileID: 1465283298}
+  - component: {fileID: 588820493}
   m_Layer: 0
   m_Name: zombiegirl
   m_TagString: Untagged
@@ -2239,7 +2240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 1
   runningSpeed: 4
-  zgrlPrefab: {fileID: 1011010406296792764, guid: fbe497a085c514c40af2b36770a49778, type: 3}
+  ragDollPrefab: {fileID: 1011010406296792764, guid: fbe497a085c514c40af2b36770a49778, type: 3}
 --- !u!195 &1465283298
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2250,7 +2251,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 13.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2262,6 +2263,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &588820493
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649283112028866171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8889811393416137658
 GameObject:
   m_ObjectHideFlags: 0

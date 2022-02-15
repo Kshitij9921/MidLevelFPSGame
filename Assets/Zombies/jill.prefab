@@ -4485,7 +4485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 2
   runningSpeed: 3
-  zgrlPrefab: {fileID: 5045019853713683139, guid: 60e01653b413dcc42a009492523b7ed4, type: 3}
+  ragDollPrefab: {fileID: 5045019853713683139, guid: 60e01653b413dcc42a009492523b7ed4, type: 3}
 --- !u!195 &219984281
 NavMeshAgent:
   m_ObjectHideFlags: 0
